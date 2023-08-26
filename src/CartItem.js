@@ -19,25 +19,48 @@ class CartItem extends React.Component{
         //    console.log('this',this.state);
 
 
-        // // setState from 1 
+        // // setState from 1 don t required preState then use it
         // // we re render component with updated value
         //  this.setState({
         //       qty:this.state.qty +1,
         //    });
 
         //setState from 2
-
+        //when we required  the pre state then we use the function from
         this.setState((prevState)=>{
-          
+             
+           
              return {
+
                 qty:prevState.qty +1,
+                
              }
              
-        })
-
-
-
+        },()=> {
+       
+             console.log('this.state',this.state);
+        });
         
+    }
+
+    //for decreasing Quantity
+
+    decreaseQuantity = ()=>{
+         
+         this.setState((prevState)=>{
+             //check the qty not goes in negative
+             if(prevState.qty == 0){
+                return{
+                    qty:prevState.qty
+                }
+             }
+             return {
+                 qty:prevState.qty -1
+             }
+         },()=> {
+       
+            console.log('this.state',this.state);
+       })
     }
 
     render(){
@@ -68,7 +91,7 @@ class CartItem extends React.Component{
                                 alt="decrease" 
                                 className="action-icons" 
                                 src=""
-                                onClick={this.increaseQuantity}
+                                onClick={this.decreaseQuantity}
                                 />
                                 <img
                                 alt="delete" 
