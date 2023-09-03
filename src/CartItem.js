@@ -1,4 +1,7 @@
 import React from "react";
+import "./cart-item.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope ,faCirclePlus,faCircleMinus,faTrashCan} from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -12,7 +15,7 @@ const CartItem = (props)=>{
         
         <div className="left-block">
             
-                <img style={styles.image}/>
+                <img style={styles.image} src={props.product.img}/>
             
         </div>
 
@@ -23,31 +26,30 @@ const CartItem = (props)=>{
                 <div style={{color:"gray"}}>Qty:{qty}</div>
                 <div className="cart-item-actions">
                         {/* Buttons */}
-                        <img 
-                        alt="increase" 
-                        className="action-icons" 
-                        src=""
-                        onClick={ () =>props.onIncreaseQuantity(props.product)}
-                        />
-                        <img 
-                        alt="decrease" 
-                        className="action-icons" 
-                        src=""
-                        onClick={() => props.onDecreaseQuantity(props.product)}
-                        />
-                        <img
-                        alt="delete" 
-                        className="action-icons" 
-                        src=""
-                        onClick={() => props.onDeleteProduct(props.product.id)}
-                        />
+                        <FontAwesomeIcon 
+                         className="action-icons" 
+                         onClick={ () =>props.onIncreaseQuantity(props.product)}
+                         icon={faCirclePlus}
+                         />
+                         <FontAwesomeIcon 
+                         className="action-icons" 
+                         onClick={() => props.onDecreaseQuantity(props.product)}
+                         icon={faCircleMinus}
+                         />
+                        <FontAwesomeIcon 
+
+                         className="action-icons" 
+                         onClick={() => props.onDeleteProduct(props.product.id)}
+                         icon={faTrashCan}
+
+                         />
                 </div>
         </div>
     
     </div>
 
     )
-     
+
 }
     
 const styles = {
@@ -56,7 +58,6 @@ const styles = {
           height:110,
           width:110,
           borderRadius:4,
-          background:"gray"
       }
      
 }

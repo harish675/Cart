@@ -2,6 +2,7 @@ import CartItem from "./CartItem";
 import Cart  from "./Cart";
 import Navbar from './Navbar';
 import React from "react";
+import './app.css';
 
 
 class App extends React.Component {
@@ -14,7 +15,7 @@ class App extends React.Component {
               price:80,
               title:'Watch',
               qty:1,
-              img:'',
+              img:'https://cdn.pixabay.com/photo/2014/07/31/23/00/wristwatch-407096_640.jpg',
               id:1,
 
           }  ,
@@ -22,7 +23,7 @@ class App extends React.Component {
               price:9999,
               title:'mobilePhone',
               qty:2,
-              img:'',
+              img:'https://cdn.pixabay.com/photo/2013/07/12/18/39/smartphone-153650_640.png',
               id:2,
 
           }  ,
@@ -30,7 +31,7 @@ class App extends React.Component {
               price:1999,
               title:'Phone',
               qty:7,
-              img:'',
+              img:'https://cdn.pixabay.com/photo/2018/08/09/10/46/telephone-3594206_640.jpg',
               id:3,
 
           }  
@@ -89,6 +90,20 @@ handleDeleteProduct = (id) =>{
      return count;
   }
 
+  getCartTotal = () =>{
+      
+       const{products} = this.state;
+       
+       let cartTotal= 0;
+       products.map((product)=>{
+          
+          cartTotal = cartTotal + product.qty*product.price;
+          
+       })
+     
+        return cartTotal;
+  }
+
   render(){
        
      const {products} = this.state;
@@ -99,10 +114,11 @@ handleDeleteProduct = (id) =>{
            products = {products}
            onIncreaseQuantity ={this.handleIncreaseQuantity}
            onDecreaseQuantity = {this.handleDecreaseQuantity}
-           onDeleteProduct = {this.handleDeleteProduct}  
-          
+           onDeleteProduct = {this.handleDeleteProduct}   
         />
+         <div className="cartTotal">Total:{this.getCartTotal()}</div>
       </div>
+
     );
   }
 }

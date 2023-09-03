@@ -1,0 +1,12 @@
+.cartTotal{
+     height: 60px;
+     width: 300px;
+     font-size: 20px;
+     text-align: center;
+     display: flex;
+     align-items: center;
+     padding-left: 25px;
+     font-weight: 700;
+     color: red;
+     
+}
